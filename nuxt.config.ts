@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@pinia/nuxt', '@nuxt/image'],
+  nitro: {
+    compressPublicAssets: true,
+  },
   image: {
     format: ['webp'],
     screens: {

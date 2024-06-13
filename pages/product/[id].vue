@@ -20,6 +20,7 @@
               :src="image"
               class="d-block w-100"
               :alt="product.name.en || product.name.dk"
+              loading="lazy"
             />
           </div>
         </div>
