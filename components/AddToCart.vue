@@ -26,7 +26,7 @@ const addToCart = (product) => {
     price: product.price,
     size: "not implemented",
     color: "not implemented",
-    image: product.images[0],
+    image: product.images?.length ? product.images[0] : 'https://placehold.co/400x532.jpg',
   };
   cartStore.addToCart(cartProduct);
   useNuxtApp().$toast(`${cartProduct.name} added to your Cart!`, {
