@@ -43,8 +43,4 @@ li {
   list-style: square;
 }
 
-/* .hover-hand:hover {
-  cursor: pointer;
-  text-decoration: underline;
-} */
 </style>
