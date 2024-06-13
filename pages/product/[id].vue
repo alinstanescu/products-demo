@@ -91,5 +91,4 @@ useHead({
   title: product.name.en || product.name.dk,
 });
 
-
 </script>

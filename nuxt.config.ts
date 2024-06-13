@@ -24,6 +24,6 @@ export default defineNuxtConfig({
     transpile: []
   },
   plugins: [
-    { src: '~/plugins/bootstrap.js', mode: 'client' },
+    { src: '~/plugins/bootstrap.client.js', mode: 'client' },
   ]
 })

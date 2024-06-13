@@ -26,9 +26,15 @@ const addToCart = (product) => {
     price: product.price,
     size: "not implemented",
     color: "not implemented",
-    image: product.images[0]
+    image: product.images[0],
   };
   cartStore.addToCart(cartProduct);
+  useNuxtApp().$toast(`${cartProduct.name} added to your Cart!`, {
+    type: "success",
+    position: "top-left",
+    transition: "slide",
+    dangerouslyHTMLString: true,
+  });
 };
 const props = defineProps({
   product: Object,
