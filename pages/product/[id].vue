@@ -10,9 +10,7 @@
         <div class="carousel-inner">
           <div
             class="carousel-item"
-            v-for="(image, index) in product.images || [
-              'https://placehold.co/400x532.jpg',
-            ]"
+            v-for="(image, index) in product.images || [imagePlaceholder]"
             :class="{ active: index === 0 }"
             :key="image"
           >
@@ -86,9 +84,9 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const productStore = useProductStore();
 const product = productStore.products.find((p) => p.id == route.params.id);
+const imagePlaceholder = "https://placehold.co/400x532.jpg";
 
 useHead({
   title: product.name.en || product.name.dk,
 });
-
 </script>

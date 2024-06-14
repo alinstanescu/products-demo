@@ -20,9 +20,7 @@
             <div class="carousel-inner">
               <div
                 class="carousel-item"
-                v-for="(image, index) in product.images || [
-                  'https://placehold.co/400x532.jpg',
-                ]"
+                v-for="(image, index) in product.images || [imagePlaceholder]"
                 :class="{ active: index === 0 }"
                 :key="image"
               >
@@ -91,13 +89,15 @@ import { useProductStore } from "@/store/products";
 const query = ref("");
 const productStore = useProductStore();
 const products = productStore.products;
+const imagePlaceholder = "https://placehold.co/400x532.jpg";
 
 const filteredProducts = computed(() => {
   const lowerCaseQuery = query.value.toLowerCase();
   return products.filter(
     (product) =>
       product.name.en?.toLowerCase().includes(lowerCaseQuery) ||
-      product.name.dk?.toLowerCase().includes(lowerCaseQuery)
+      product.name.dk?.toLowerCase().includes(lowerCaseQuery) ||
+      product.categories?.includes(lowerCaseQuery)
   );
 });
 </script>
