@@ -4,16 +4,16 @@
     <li
       v-for="(product, index) in cartStore.cart"
       :key="index"
-      class="list-group-item"
+      class="list-group-item d-flex align-items-center"
     >
       <nuxt-link :to="'/product/' + product.id">
         <nuxt-img :src="product.image" width="auto" height="50" />
       </nuxt-link>
-      <span class="m-2">{{ product.name }}</span>
-      <span class="m-2">{{ product.size }}</span>
-      <span class="m-2">{{ product.price }} DKK</span>
+      <span class="m-2 flex-fill">{{ product.name }}</span>
+      <span class="m-2 flex-fill">{{ product.size }}</span>
+      <span class="m-2 flex-fill">{{ product.price }} DKK</span>
       <span
-        class="badge text-bg-danger hover-hand float-end"
+        class="hover-hand badge text-bg-danger"
         @click="removeProductFromCart(product.id)"
         >Remove Product</span
       >
