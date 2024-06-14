@@ -50,11 +50,12 @@
             <span
               v-for="size in product.size"
               :key="size"
-              class="badge rounded-pill text-bg-secondary m-1"
+              class="badge rounded-pill text-bg-secondary m-1 hover-hand"
+              @click="setSelectedSize(size)"
               >{{ size }}</span
             >
           </div>
-          <p>Colors: {{ product.color }}</p>
+          <p>{{ product.color ? `colors: ${product.color}` : '' }}</p>
         </div>
 
         <div v-else>
@@ -65,7 +66,8 @@
               <span
                 v-for="size in variant.size"
                 :key="size"
-                class="badge rounded-pill text-bg-secondary m-1"
+                class="badge rounded-pill text-bg-secondary m-1 hover-hand"
+                @click="setselectedSize(size)"
                 >{{ size }}</span
               >
             </div>
@@ -84,6 +86,10 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const productStore = useProductStore();
 const product = productStore.products.find((p) => p.id == route.params.id);
+
+const setSelectedSize = (size) => {
+  product.selectedSize = size;
+}
 const imagePlaceholder = "https://placehold.co/400x532.jpg";
 
 useHead({

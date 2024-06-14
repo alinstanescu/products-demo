@@ -9,7 +9,9 @@
       <nuxt-link :to="'/product/' + product.id">
         <nuxt-img :src="product.image" width="auto" height="50" />
       </nuxt-link>
-      {{ product.name }}
+      <span class="m-2">{{ product.name }}</span>
+      <span class="m-2">{{ product.size }}</span>
+      <span class="m-2">{{ product.price }} DKK</span>
       <span
         class="badge text-bg-danger hover-hand float-end"
         @click="removeProductFromCart(product.id)"
