@@ -1,0 +1,194 @@
+<template>
+  <div class="container my-5">
+    <h1 class="mb-4">Checkout</h1>
+    <div class="row">
+      <div class="col-md-8">
+        <h4 class="mb-3">Billing Address</h4>
+        <form>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">First name</label>
+              <input type="text" class="form-control" id="firstName" v-model="firstName" required />
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="lastName" v-model="lastName" required />
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label"
+                >Email <span class="text-muted">(Optional)</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                v-model="email"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" v-model="address" required />
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label"
+                >Address 2 <span class="text-muted">(Optional)</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="address2"
+                placeholder="Apartment or suite"
+                v-model="address2"
+              />
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country" required>
+                <option value="">Choose...</option>
+                <option>Denmark</option>
+              </select>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">State</label>
+              <select class="form-select" id="state" required>
+                <option value="">Choose...</option>
+                <option>Hovedstaden</option>
+                <option>Midtjylland</option>
+                <option>Nordjylland</option>
+                <option>Sjælland</option>
+                <option>Syddanmark</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="zip" v-model="zip" required />
+            </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <h4 class="mb-3">Payment</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input
+                id="credit"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                checked
+                required
+              />
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input
+                id="debit"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input
+                id="paypal"
+                name="paymentMethod"
+                type="radio"
+                class="form-check-input"
+                required
+              />
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Name on card</label>
+              <input type="text" class="form-control" id="cc-name" v-model="ccName" required />
+              <small class="text-muted">Full name as displayed on card</small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label"
+                >Credit card number</label
+              >
+              <input type="text" class="form-control" id="cc-number" v-model="ccNumber" required />
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Expiration</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cc-expiration"
+                v-model="ccExpiration"
+                required
+              />
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" v-model="ccCVV" required />
+            </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <button @click.prevent="" class="w-100 btn btn-primary btn-lg" type="submit">
+            Continue to checkout
+          </button>
+        </form>
+      </div>
+
+      <div class="col-md-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge bg-secondary rounded-pill">{{
+            numberOfItems
+          }}</span>
+        </h4>
+        <cart />
+        <form class="row card p-2 mt-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code" />
+            <button type="submit" class="btn btn-secondary">Redeem</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from "vue";
+import { useCartStore } from "@/store/cart";
+const cartStore = useCartStore();
+
+const numberOfItems = computed(() => {
+  return cartStore.cart.length;
+});
+
+const firstName = ref("");
+const lastName = ref("");
+const email = ref("");
+const address = ref("");
+const address2 = ref("");
+const country = ref("");
+const state = ref("");
+const zip = ref("");
+const paymentMethod = ref("credit");
+const ccName = ref("");
+const ccNumber = ref("");
+const ccExpiration = ref("");
+const ccCVV = ref("");
+</script>
