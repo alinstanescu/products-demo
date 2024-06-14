@@ -151,7 +151,7 @@
       </div>
 
       <div class="col-md-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="d-flex justify-content-between align-items-center mb-3 mt-2 mt-md-0">
           <span class="text-muted">Your cart</span>
           <span class="badge bg-secondary rounded-pill">{{
             numberOfItems
